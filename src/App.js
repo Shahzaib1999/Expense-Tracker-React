@@ -1,5 +1,4 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 import { Header } from './components/Header/Header';
 import { TotalAmount } from './components/TotalAmount/TotalAmount';
@@ -10,7 +9,6 @@ import { AddTransaction } from './components/AddTransaction/AddTransaction';
 function App() {
   return (
     <div className="App-header">
-      {/* <div className="mainWrapper"> */}
         <Header />
         <TotalAmount />
         <div className="bodyWrapper">
@@ -24,7 +22,6 @@ function App() {
           <p className="transactionHistoryText m-20">Add New Transaction</p>
           <AddTransaction />
         </div>
-      {/* </div> */}
     </div>
   );
 }
