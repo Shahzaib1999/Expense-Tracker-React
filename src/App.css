@@ -128,9 +128,11 @@
 }
 
 .transactionsWrapper{
+  height: 140px;
   max-height: 150px;
   overflow-y: scroll;
   overflow-x: hidden;
+  text-align: center;
 }
 
 .transactionWrapper{

@@ -1,12 +1,27 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { GlobalContext } from '../../context/GlobalState';
+import { TransactionList } from '../TransactionList/TransactionList';
 
-export const Transaction = (props) => {
-  let sign = props.amount > 0 ? '+' : '-';
+export const Transaction = () => {
+  const { transactions, deleteTransaction } = useContext(GlobalContext);
+
+  const onDeleteTransaction = (id, amount) => {
+    deleteTransaction(id, amount);
+  }
+  
   return (
-    <div className="transactionWrapper" style={props.amount > 0 ? {borderRight: '5px solid #17ce67'}:{borderRight: '5px solid #f25052'}}>
-        <p className="deleteBtn">x</p>
-      <p className="m-1">Description</p>
-      <p className="m-1">{sign}$20</p>
-    </div>
+    <>
+      <p className="transactionHistoryText m-1">Transaction History</p>
+      <div className="transactionsWrapper" style={(!transactions.length) ? { lineHeight: 6 } : {}}>
+        {(transactions && transactions.length) ? transactions.map((transaction, ind) => {
+          return (
+            <TransactionList transaction={transaction} key={ind} deleteTransaction={onDeleteTransaction} />
+          )
+        })
+          :
+          <p>No History</p>}
+
+      </div>
+    </>
   )
 }

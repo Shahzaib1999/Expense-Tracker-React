@@ -1,28 +1,28 @@
 import React from 'react';
-import './App.css';
+
 import { Header } from './components/Header/Header';
 import { TotalAmount } from './components/TotalAmount/TotalAmount';
 import { IncomeExpense } from './components/IncomeExpense/IncomeExpense';
 import { Transaction } from './components/Transaction/Transaction';
 import { AddTransaction } from './components/AddTransaction/AddTransaction';
+import { GlobalProvider } from './context/GlobalState';
+
+import './App.css';
 
 function App() {
   return (
-    <div className="App-header">
+    <GlobalProvider>
+      <div className="App-header">
         <Header />
         <TotalAmount />
         <div className="bodyWrapper">
           <IncomeExpense />
-          <p className="transactionHistoryText m-1">Transaction History</p>
-          <div className="transactionsWrapper">
-            <Transaction />
-            <Transaction amount={50} />
-            <Transaction />
-          </div>
+          <Transaction />
           <p className="transactionHistoryText m-20">Add New Transaction</p>
           <AddTransaction />
         </div>
-    </div>
+      </div>
+    </GlobalProvider>
   );
 }
 
